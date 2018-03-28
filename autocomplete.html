@@ -25,8 +25,8 @@
 		var arr = ['one','oney','onesy','two','tree'];
 		var tagging;
 		var user="";
-		$("#textbox").on('keyup', function(event) {
-			alert(event.key);
+		$("#textbox").on('keydown', function(event) {
+			//alert(event.key);
 			if(event.key=='@'){
 				//tagging
 				tagging=true;
