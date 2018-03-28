@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Autocomplete</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+</head>
+<body>
+<div contenteditable="true" id = "textbox" style="width: 200px;height: 50px;border-style: solid;"></div>
+<div id = "suggestion-box"></div>
+	<script>
+		var arr = ['one','oney','onesy','two','tree'];
+		var tagging;
+		$("#textbox").on('keyup', function(event) {
+			alert(event.key);
+			if(event.key=='@'){
+				//tagging
+				tagging=true;
+			}
+		});
+	</script>
+</body>
+</html>
