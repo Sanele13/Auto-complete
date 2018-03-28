@@ -10,17 +10,24 @@
 <div id = "suggestion-box"></div>
 	<script>
 		function autocomplete(word,array) {
+			document.getElementById('suggestion-box').innerHTML="";
 			var temp_array = [];
 			//find matches an put em in an temp array
+/*			alert(array);
+			alert(word);
+			//alert()*/
 			for (var i = 0; i < array.length; i++) {
-				if(array[i].substring(0,word.length+1)===word){
+				if(array[i].substring(0,word.length)===word){
+
 					temp_array.push(array[i]);
 				}
 			}
+			//alert(temp_array);
 			//display matches in 'suggestion-box'
 			for (var i = 0; i < temp_array.length; i++) {
 				document.getElementById('suggestion-box').innerHTML+=temp_array[i]+"<br>";
 			}
+			temp_array=[];
 		}
 		var arr = ['one','oney','onesy','two','tree'];
 		var tagging;
@@ -32,13 +39,32 @@
 				tagging=true;
 
 			}
+			else if(event.key=='Shift' || event.key=='Control' || event.key=='Enter'){
+						//
+			}
+			else if(event.key==" "){
+				tagging=false;
+				user="";
+				alert('not tagging');
+			}
 			else if(tagging==true){
-				user+=event.key;
+				//alert(arr);
+				if(event.key=='Backspace'){
+					user=user.substring(0,user.length-1);
+				}
 
+				else{
+					user+=event.key;
+				}
+				
+				//alert(user);
 				autocomplete(user,arr);
 			}
 			else{
 
+				tagging=false;
+				user="";
+				alert('not tagging');
 				//I dont know yet
 			}
 		});
