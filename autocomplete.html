@@ -9,13 +9,37 @@
 <div contenteditable="true" id = "textbox" style="width: 200px;height: 50px;border-style: solid;"></div>
 <div id = "suggestion-box"></div>
 	<script>
+		function autocomplete(word,array) {
+			var temp_array = [];
+			//find matches an put em in an temp array
+			for (var i = 0; i < array.length; i++) {
+				if(array[i].substring(0,word.length+1)===word){
+					temp_array.push(array[i]);
+				}
+			}
+			//display matches in 'suggestion-box'
+			for (var i = 0; i < temp_array.length; i++) {
+				document.getElementById('suggestion-box').innerHTML+=temp_array[i]+"<br>";
+			}
+		}
 		var arr = ['one','oney','onesy','two','tree'];
 		var tagging;
+		var user="";
 		$("#textbox").on('keyup', function(event) {
 			alert(event.key);
 			if(event.key=='@'){
 				//tagging
 				tagging=true;
+
+			}
+			else if(tagging==true){
+				user+=event.key;
+
+				autocomplete(user,arr);
+			}
+			else{
+
+				//I dont know yet
 			}
 		});
 	</script>
